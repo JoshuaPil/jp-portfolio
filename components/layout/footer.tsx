@@ -16,14 +16,6 @@ export function Footer() {
                     >
                         LinkedIn
                     </Link>
-                    <Link
-                        href="https://docs.google.com/document/d/1jod1ree7mPRIOf9KX7kpzHrxmFB1CQr4YMg0BtfkE1o/edit?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                        Resume
-                    </Link>
                 </div>
             </div>
         </footer>
