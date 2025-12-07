@@ -16,7 +16,7 @@ export default function Home() {
       <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <VideoPlayer
-            src="http://joshuapiller.com/wp-content/uploads/2018/05/BW_MAIN.mp4"
+            src="/BW_MAIN.mp4"
             className="w-full h-full rounded-none"
             autoPlay
             muted
@@ -89,14 +89,14 @@ export default function Home() {
         </div>
         <div className="grid md:grid-cols-2 gap-8">
           <VideoPlayer
-            src="http://joshuapiller.com/wp-content/uploads/2019/03/Material_Pass_01.mp4"
+            src="/Material_Pass_01.mp4"
             className="aspect-video"
             autoPlay
             muted
             loop
           />
           <VideoPlayer
-            src="http://joshuapiller.com/wp-content/uploads/2019/06/dsm.mp4"
+            src="/dsm.mp4"
             className="aspect-video"
             autoPlay
             muted
@@ -120,7 +120,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             <VideoPlayer
-              src="http://joshuapiller.com/wp-content/uploads/2019/06/responsive-scaling.mp4"
+              src="/responsive-scaling.mp4"
               className="aspect-video"
               autoPlay
               muted
