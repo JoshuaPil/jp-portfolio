@@ -12,8 +12,8 @@ export default function CruiseFlightSearch() {
 
             <Section className="pt-32 pb-12">
                 <Button variant="ghost" asChild className="mb-8 pl-0 hover:pl-2 transition-all">
-                    <Link href="/#works" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                        <ArrowLeft size={18} /> Back to Works
+                    <Link href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+                        <ArrowLeft size={18} /> Back to Home
                     </Link>
                 </Button>
 

@@ -31,11 +31,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
             A systems-level product design thinker aiming to create powerful & valuable experiences.
           </p>
-          <div className="pt-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-400">
-            <Button asChild size="lg" className="rounded-full px-8">
-              <Link href="#works">View Works</Link>
-            </Button>
-          </div>
+
         </div>
       </section>
 
@@ -136,30 +132,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Works */}
-      <Section id="works">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Selected Works</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card
-            title="Cruise Flight Search"
-            description="Allow guests to make flight reservations and connect to their cruise."
-            href="/work/cruise-flight-search"
-          >
-            <div className="w-full h-full bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center">
-              <span className="text-white/50 font-bold text-2xl">Flight Search</span>
-            </div>
-          </Card>
-          <Card
-            title="Telehealth"
-            description="Long-distance patient and clinician contact, care, advice, reminders, education, intervention and monitoring."
-            href="/work/telehealth"
-          >
-            <div className="w-full h-full bg-gradient-to-br from-emerald-900 to-slate-900 flex items-center justify-center">
-              <span className="text-white/50 font-bold text-2xl">Telehealth</span>
-            </div>
-          </Card>
-        </div>
-      </Section>
+
 
       <Footer />
     </main>
