@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono"
+});
 
 export const metadata: Metadata = {
   title: "Joshua Piller | UX Designer",
@@ -17,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={cn(inter.variable, "font-sans antialiased bg-background text-foreground min-h-screen")}>
+      <body className={cn(inter.variable, spaceMono.variable, "font-sans antialiased bg-background text-foreground min-h-screen")}>
         {children}
       </body>
     </html>

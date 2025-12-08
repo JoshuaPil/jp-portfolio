@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-space-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -18,24 +19,33 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  
+
   --primary: #ededed;
   --primary-foreground: #0a0a0a;
-  
+
   --secondary: #27272a;
   --secondary-foreground: #ededed;
-  
+
   --muted: #27272a;
   --muted-foreground: #a1a1aa;
-  
+
   --accent: #27272a;
   --accent-foreground: #ededed;
-  
+
   --border: #27272a;
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans tracking-tight;
   }
 }
