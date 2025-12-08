@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StrategyAnimation } from "@/components/ui/strategy-animation";
 import { HeroTitle } from "@/components/ui/hero-title";
+import { LawsCarousel } from "@/components/ui/laws-carousel";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -86,47 +87,7 @@ export default function Home() {
                 Best practices and heuristics that guide my design decisions.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  name: "Aesthetic-Usability Effect",
-                  desc: "Users often perceive aesthetically pleasing design as design that’s more usable."
-                },
-                {
-                  name: "Doherty Threshold",
-                  desc: "Productivity soars when a computer and its users interact at a pace (<400ms) that ensures that neither has to wait on the other."
-                },
-                {
-                  name: "Fitts’s Law",
-                  desc: "The time to acquire a target is a function of the distance to and size of the target."
-                },
-                {
-                  name: "Hick’s Law",
-                  desc: "The time it takes to make a decision increases with the number and complexity of choices."
-                },
-                {
-                  name: "Jakob’s Law",
-                  desc: "Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know."
-                },
-                {
-                  name: "Law of Proximity",
-                  desc: "Objects that are near, or proximate to each other, tend to be grouped together."
-                },
-                {
-                  name: "Miller’s Law",
-                  desc: "The average person can only keep 7 (plus or minus 2) items in their working memory."
-                },
-                {
-                  name: "Occam’s Razor",
-                  desc: "Among competing hypotheses that predict equally well, the one with the fewest assumptions should be selected."
-                }
-              ].map((law) => (
-                <div key={law.name} className="p-6 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors">
-                  <h3 className="font-bold mb-2">{law.name}</h3>
-                  <p className="text-sm text-muted-foreground">{law.desc}</p>
-                </div>
-              ))}
-            </div>
+            <LawsCarousel />
           </div>
         </div>
       </Section>
@@ -191,6 +152,6 @@ export default function Home() {
 
 
       <Footer />
-    </main>
+    </main >
   );
 }
