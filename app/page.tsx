@@ -25,9 +25,6 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-6">
           <HeroQuoteRotator />
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-            Aiming to create powerful & valuable experiences.
-          </p>
 
         </div>
       </section>
