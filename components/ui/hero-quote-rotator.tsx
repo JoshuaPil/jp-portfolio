@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 type Quote = {
     text: string;
@@ -43,7 +43,7 @@ const QUOTES: Quote[] = [
 const ROTATION_INTERVAL = 8000; // ms visible time per quote
 
 // Text variants for the main quote line
-const quoteVariants = {
+const quoteVariants: Variants = {
     initial: { opacity: 0, scale: 0.95 },
     enter: {
         opacity: 1,
@@ -58,7 +58,7 @@ const quoteVariants = {
 };
 
 // Attribution variants
-const authorVariants = {
+const authorVariants: Variants = {
     initial: { opacity: 0, y: 8 },
     enter: {
         opacity: 1,
@@ -74,7 +74,7 @@ const authorVariants = {
 
 // Particle variants
 // Idea: particles start clustered, then drift slightly while visible, then spread on exit
-const particleVariants = {
+const particleVariants: Variants = {
     initial: {
         opacity: 0,
         scale: 0.6,
