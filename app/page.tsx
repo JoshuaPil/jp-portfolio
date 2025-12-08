@@ -5,12 +5,12 @@ import { VideoPlayer } from "@/components/ui/video-player";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StrategyAnimation } from "@/components/ui/strategy-animation";
-import { HeroTitle } from "@/components/ui/hero-title";
 import { LawsCarousel } from "@/components/ui/laws-carousel";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { HeroBackground } from "@/components/ui/hero-background";
+import { HeroQuoteRotator } from "@/components/ui/hero-quote-rotator";
 
 export default function Home() {
   return (
@@ -24,10 +24,7 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-6">
-          <HeroTitle
-            text="A systems level product design thinker"
-            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter"
-          />
+          <HeroQuoteRotator />
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
             Aiming to create powerful & valuable experiences.
           </p>
