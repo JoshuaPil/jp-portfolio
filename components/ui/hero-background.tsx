@@ -54,7 +54,7 @@ export function HeroBackground() {
     return (
         <div
             ref={containerRef}
-            className="absolute inset-0 w-full h-full overflow-hidden bg-black -z-10"
+            className="absolute inset-0 w-full h-full overflow-hidden bg-black z-0"
             onMouseMove={handleMouseMove}
             onMouseEnter={handleInteractionStart}
             onMouseLeave={handleInteractionEnd}
