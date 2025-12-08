@@ -10,23 +10,19 @@ import { LawsCarousel } from "@/components/ui/laws-carousel";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { HeroBackground } from "@/components/ui/hero-background";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <VideoPlayer
-            src="/BW_MAIN.mp4"
-            className="w-full h-full rounded-none"
-            autoPlay
-            muted
-            loop
-          />
-          <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
-        </div>
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Background Video with Color Reveal */}
+        <HeroBackground />
+
+        {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-6">
           <HeroTitle
             text="A systems level product design thinker"
