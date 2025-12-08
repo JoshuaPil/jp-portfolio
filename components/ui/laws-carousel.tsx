@@ -8,42 +8,53 @@ const laws = [
     {
         name: "Aesthetic-Usability Effect",
         desc: "Users often perceive aesthetically pleasing design as design that’s more usable.",
-        icon: "✨"
+        image: "/images/laws/aesthetic-usability.png",
+        color: "#F4F1DE", // Cream
+        textColor: "text-slate-900"
     },
     {
         name: "Doherty Threshold",
         desc: "Productivity soars when a computer and its users interact at a pace (<400ms) that ensures that neither has to wait on the other.",
-        icon: "⚡️"
+        color: "#3D5A80", // Blue
+        textColor: "text-white"
     },
     {
         name: "Fitts’s Law",
         desc: "The time to acquire a target is a function of the distance to and size of the target.",
-        icon: "🎯"
+        color: "#98C1D9", // Light Blue
+        textColor: "text-slate-900"
     },
     {
         name: "Hick’s Law",
         desc: "The time it takes to make a decision increases with the number and complexity of choices.",
-        icon: "🤔"
+        image: "/images/laws/hicks-law.png",
+        color: "#E0FBFC", // Pale Blue
+        textColor: "text-slate-900"
     },
     {
         name: "Jakob’s Law",
         desc: "Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know.",
-        icon: "🧠"
+        color: "#EE6C4D", // Burnt Orange
+        textColor: "text-white"
     },
     {
         name: "Law of Proximity",
         desc: "Objects that are near, or proximate to each other, tend to be grouped together.",
-        icon: "📍"
+        color: "#293241", // Dark Blue
+        textColor: "text-white"
     },
     {
         name: "Miller’s Law",
         desc: "The average person can only keep 7 (plus or minus 2) items in their working memory.",
-        icon: "🔢"
+        image: "/images/laws/millers-law.png",
+        color: "#E07A5F", // Terra Cotta
+        textColor: "text-white"
     },
     {
         name: "Occam’s Razor",
         desc: "Among competing hypotheses that predict equally well, the one with the fewest assumptions should be selected.",
-        icon: "✂️"
+        color: "#F2CC8F", // Yellow
+        textColor: "text-slate-900"
     }
 ];
 
@@ -98,7 +109,7 @@ function LawCard({ law, containerRef, index }: { law: any; containerRef: any; in
     return (
         <motion.div
             ref={cardRef}
-            className="relative flex-shrink-0 w-[85vw] md:w-[calc(33.333%-16px)] h-[400px] snap-center"
+            className="relative flex-shrink-0 w-[85vw] md:w-[calc(33.333%-16px)] h-[500px] snap-center"
             style={{
                 scale,
                 opacity
@@ -111,35 +122,49 @@ function LawCard({ law, containerRef, index }: { law: any; containerRef: any; in
             }}
             viewport={{ once: true }}
         >
-            <div className="absolute inset-0 bg-[#0A0A0A] rounded-[32px] border border-white/10 overflow-hidden transition-all duration-500 hover:border-white/20 hover:shadow-2xl">
-
-                {/* Subtle Gradient Background */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-50" />
-
-                {/* Content Container */}
-                <div className="relative h-full p-8 flex flex-col justify-between z-10">
-                    <div className="space-y-6">
-                        {/* Icon / Number */}
-                        <div className="text-sm font-mono text-muted-foreground tracking-widest uppercase">
-                            {String(index + 1).padStart(2, '0')} / 08
+            <div
+                className="absolute inset-0 rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-2xl border border-white/10"
+                style={{ backgroundColor: law.color || '#0A0A0A' }}
+            >
+                {law.image ? (
+                    // Full Image Background (Poster)
+                    <div className="absolute inset-0">
+                        <img
+                            src={law.image}
+                            alt={law.name}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                ) : (
+                    // CSS Fallback for Poster Style
+                    <div className={cn("relative h-full p-8 flex flex-col justify-between", law.textColor)}>
+                        {/* Header */}
+                        <div className="space-y-4 relative z-10">
+                            {/* Icon Placeholder */}
+                            <div className="w-12 h-12 border-2 border-current rounded-full flex items-center justify-center opacity-50">
+                                <span className="text-xl font-bold">{index + 1}</span>
+                            </div>
+                            <h3 className="text-4xl font-bold tracking-tight leading-none">
+                                {law.name}
+                            </h3>
                         </div>
 
-                        {/* Title */}
-                        <h3 className="text-3xl font-bold tracking-tight text-white leading-tight">
-                            {law.name}
-                        </h3>
-                    </div>
+                        {/* Geometric Shape Placeholder (Center) */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+                            <div className="w-48 h-48 rounded-full border-[20px] border-current" />
+                        </div>
 
-                    {/* Description */}
-                    <div className="space-y-6">
-                        <p className="text-base text-muted-foreground leading-relaxed">
-                            {law.desc}
-                        </p>
-
-                        {/* Visual Indicator */}
-                        <div className="w-8 h-1 bg-white/20 rounded-full" />
+                        {/* Description */}
+                        <div className="space-y-4 relative z-10">
+                            <p className="text-lg font-medium leading-relaxed opacity-90">
+                                {law.desc}
+                            </p>
+                            <div className="text-xs font-mono tracking-widest uppercase opacity-50">
+                                LAWSOFUX.COM
+                            </div>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </motion.div>
     );
