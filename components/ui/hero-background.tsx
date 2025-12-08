@@ -19,7 +19,7 @@ export function HeroBackground() {
     const smoothY = useSpring(mouseY, { damping: 20, stiffness: 200 });
 
     // Smooth spring for the reveal size expansion/contraction
-    const smoothSize = useSpring(revealSize, { damping: 30, stiffness: 100 });
+    const smoothSize = useSpring(revealSize, { damping: 40, stiffness: 80 }); // Slower, smoother easing
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!containerRef.current) return;
@@ -29,7 +29,8 @@ export function HeroBackground() {
     };
 
     const handleInteractionStart = () => {
-        revealSize.set(300); // Target size
+        // Expand to roughly 65% of the viewport (estimating ~1000px-1200px radius for typical desktop)
+        revealSize.set(1200);
     };
 
     const handleInteractionEnd = () => {
@@ -37,14 +38,16 @@ export function HeroBackground() {
     };
 
     // Construct the mask image string dynamically
-    // We want the mask to be TRANSPARENT at the center (hiding the grayscale layer)
-    // and OPAQUE elsewhere (showing the grayscale layer)
+    // The mask defines where the OVERLAY is visible.
+    // Transparent = Overlay Hidden (Video Revealed)
+    // Black = Overlay Visible (Video Grayscale)
     const maskImage = useTransform(
         [smoothX, smoothY, smoothSize],
         ([x, y, size]) => {
-            // If size is 0, we want full grayscale (full white mask)
-            if (size === 0) return "none";
-            return `radial-gradient(circle ${size}px at ${x}px ${y}px, transparent 0%, black 100%)`;
+            if (size === 0) return "none"; // Full overlay visible
+            // Soft gradient: transparent at center -> black at edge
+            // 20% to 100% creates a very soft, atmospheric fade
+            return `radial-gradient(circle ${size}px at ${x}px ${y}px, transparent 20%, black 100%)`;
         }
     );
 
@@ -67,23 +70,24 @@ export function HeroBackground() {
             }}
             onTouchEnd={handleInteractionEnd}
         >
-            {/* The Base Video (Full Color) */}
+            {/* The Base Video (Full Color & Boosted) */}
+            {/* We boost brightness/saturation here so the reveal feels "illuminated" */}
             <video
                 ref={videoRef}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
+                className="absolute inset-0 w-full h-full object-cover opacity-100 filter brightness-110 saturate-110"
             >
                 <source src="/joshua_geometric_untitled.mp4" type="video/mp4" />
             </video>
 
-            {/* The Grayscale Overlay */}
-            {/* This layer applies grayscale to everything behind it. 
-                We mask this layer to "cut a hole" in the grayscale effect. */}
+            {/* The Grayscale Overlay (Default State) */}
+            {/* This sits on top. It makes the underlying video look dark and grayscale. */}
+            {/* The mask cuts a hole in THIS layer, revealing the bright video below. */}
             <motion.div
-                className="absolute inset-0 w-full h-full backdrop-grayscale bg-black/20"
+                className="absolute inset-0 w-full h-full backdrop-grayscale backdrop-brightness-50 bg-black/40"
                 style={{
                     maskImage,
                     WebkitMaskImage: webkitMaskImage
