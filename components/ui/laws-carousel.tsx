@@ -124,7 +124,7 @@ function LawCard({ law, containerRef, index }: { law: any; containerRef: any; in
             viewport={{ once: true }}
         >
             <div
-                className="absolute inset-0 rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-2xl border border-white/10 bg-[#0A0A0A]"
+                className="absolute inset-0 rounded-none overflow-hidden transition-all duration-500 hover:shadow-2xl border border-white/10 bg-[#0A0A0A]"
             >
                 {law.image ? (
                     // Full Image Background (Poster)
