@@ -22,6 +22,7 @@ const laws = [
     {
         name: "Fitts’s Law",
         desc: "The time to acquire a target is a function of the distance to and size of the target.",
+        image: "/images/laws/fitts-law.png",
         color: "#98C1D9", // Light Blue
         textColor: "text-slate-900"
     },
@@ -41,6 +42,7 @@ const laws = [
     {
         name: "Law of Proximity",
         desc: "Objects that are near, or proximate to each other, tend to be grouped together.",
+        image: "/images/laws/law-of-proximity.png",
         color: "#293241", // Dark Blue
         textColor: "text-white"
     },
