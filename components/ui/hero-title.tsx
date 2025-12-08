@@ -141,32 +141,35 @@ function Particle({ initialX, initialY, size, mouseX, mouseY, isHovered }: any) 
 
 function InteractiveChar({ char, mouseX, mouseY, containerRef }: { char: string; mouseX: any; mouseY: any; containerRef: React.RefObject<HTMLDivElement | null> }) {
     const ref = useRef<HTMLSpanElement>(null);
-    const [distance, setDistance] = useState(1000);
 
-    // Update distance for ripple effect
-    useTransform([mouseX, mouseY], ([x, y]: number[]) => {
-        if (!ref.current || !containerRef.current) return;
+    // Calculate distance and derived styles using pure MotionValues
+    const distance = useTransform([mouseX, mouseY], ([x, y]: number[]) => {
+        if (!ref.current || !containerRef.current) return 1000;
         const rect = ref.current.getBoundingClientRect();
         const containerRect = containerRef.current.getBoundingClientRect();
 
         const charX = rect.left - containerRect.left + rect.width / 2;
         const charY = rect.top - containerRect.top + rect.height / 2;
 
-        const d = Math.sqrt(Math.pow(x - charX, 2) + Math.pow(y - charY, 2));
-        setDistance(d);
+        return Math.sqrt(Math.pow(x - charX, 2) + Math.pow(y - charY, 2));
     });
 
-    // Calculate effects based on distance
-    // Closer = more displacement/glow
-    const isNear = distance < 100;
+    // Map distance to styles
+    const textShadow = useTransform(distance, (d: number) => {
+        return d < 100 ? "0 0 8px rgba(255,255,255,0.5)" : "none";
+    });
+
+    const color = useTransform(distance, (d: number) => {
+        return d < 100 ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.8)";
+    });
 
     return (
         <motion.span
             ref={ref}
             className="relative inline-block transition-colors duration-200"
             style={{
-                textShadow: isNear ? "0 0 8px rgba(255,255,255,0.5)" : "none",
-                color: isNear ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.8)", // Slight brighten on hover
+                textShadow,
+                color,
             }}
             whileHover={{
                 scale: 1.1,
