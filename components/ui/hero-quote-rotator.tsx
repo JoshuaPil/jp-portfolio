@@ -134,12 +134,11 @@ export const HeroQuoteRotator: React.FC = () => {
     return (
         <section
             className="relative flex items-center justify-center min-h-[40vh] px-6 py-16 cursor-pointer"
-            onMouseEnter={triggerNext}
             onClick={triggerNext}
         >
             {/* Particle field behind text */}
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-                <AnimatePresence mode="sync">
+                <AnimatePresence mode="popLayout">
                     <motion.div
                         key={cycleKey}
                         className="relative w-[480px] h-[220px] max-w-full"
@@ -160,18 +159,19 @@ export const HeroQuoteRotator: React.FC = () => {
             </div>
 
             {/* Quote and author */}
-            <div className="relative z-10 max-w-3xl text-center">
-                <AnimatePresence mode="sync">
+            {/* Fixed height container to prevent layout shifts */}
+            <div className="relative z-10 w-full max-w-6xl h-[160px] flex items-center justify-center">
+                <AnimatePresence mode="popLayout">
                     <motion.div
                         key={cycleKey}
-                        className="flex flex-col gap-3"
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-4"
                         initial="initial"
                         animate="enter"
                         exit="exit"
                         variants={quoteVariants}
                     >
                         <motion.h1
-                            className="text-3xl md:text-5xl font-semibold tracking-tight text-white"
+                            className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white text-center whitespace-nowrap"
                             variants={quoteVariants}
                         >
                             {currentQuote.text}
