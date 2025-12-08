@@ -4,6 +4,8 @@ import { Section } from "@/components/ui/section";
 import { VideoPlayer } from "@/components/ui/video-player";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { StrategyAnimation } from "@/components/ui/strategy-animation";
+import { HeroTitle } from "@/components/ui/hero-title";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -25,8 +27,12 @@ export default function Home() {
           <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-6">
+          <HeroTitle
+            text="A systems level product design thinker"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter"
+          />
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-            A systems-level product design thinker aiming to create powerful & valuable experiences.
+            Aiming to create powerful & valuable experiences.
           </p>
 
         </div>
@@ -58,53 +64,69 @@ export default function Home() {
 
       {/* Design Strategies */}
       <Section id="principles">
-        <div className="space-y-12">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Laws of UX</h2>
-            <p className="text-lg text-muted-foreground">
-              Best practices and heuristics that guide my design decisions.
-            </p>
+        <div className="space-y-16">
+          {/* Intro & Animation */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Design Strategies</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                I understand the impact of the research insights on the UX that enables user-centricity and create an outcome-based roadmap focusing on the vision. The vision is the ultimate north star and choosing what to do—and what not to do—is the definition of strategy.
+              </p>
+            </div>
+            <div className="h-[300px] md:h-[400px] w-full">
+              <StrategyAnimation />
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Aesthetic-Usability Effect",
-                desc: "Users often perceive aesthetically pleasing design as design that’s more usable."
-              },
-              {
-                name: "Doherty Threshold",
-                desc: "Productivity soars when a computer and its users interact at a pace (<400ms) that ensures that neither has to wait on the other."
-              },
-              {
-                name: "Fitts’s Law",
-                desc: "The time to acquire a target is a function of the distance to and size of the target."
-              },
-              {
-                name: "Hick’s Law",
-                desc: "The time it takes to make a decision increases with the number and complexity of choices."
-              },
-              {
-                name: "Jakob’s Law",
-                desc: "Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know."
-              },
-              {
-                name: "Law of Proximity",
-                desc: "Objects that are near, or proximate to each other, tend to be grouped together."
-              },
-              {
-                name: "Miller’s Law",
-                desc: "The average person can only keep 7 (plus or minus 2) items in their working memory."
-              },
-              {
-                name: "Occam’s Razor",
-                desc: "Among competing hypotheses that predict equally well, the one with the fewest assumptions should be selected."
-              }
-            ].map((law) => (
-              <div key={law.name} className="p-6 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors">
-                <h3 className="font-bold mb-2">{law.name}</h3>
-                <p className="text-sm text-muted-foreground">{law.desc}</p>
-              </div>
-            ))}
+
+          {/* Laws of UX Grid */}
+          <div className="space-y-8">
+            <div className="text-center max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4">Laws of UX</h3>
+              <p className="text-muted-foreground">
+                Best practices and heuristics that guide my design decisions.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  name: "Aesthetic-Usability Effect",
+                  desc: "Users often perceive aesthetically pleasing design as design that’s more usable."
+                },
+                {
+                  name: "Doherty Threshold",
+                  desc: "Productivity soars when a computer and its users interact at a pace (<400ms) that ensures that neither has to wait on the other."
+                },
+                {
+                  name: "Fitts’s Law",
+                  desc: "The time to acquire a target is a function of the distance to and size of the target."
+                },
+                {
+                  name: "Hick’s Law",
+                  desc: "The time it takes to make a decision increases with the number and complexity of choices."
+                },
+                {
+                  name: "Jakob’s Law",
+                  desc: "Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know."
+                },
+                {
+                  name: "Law of Proximity",
+                  desc: "Objects that are near, or proximate to each other, tend to be grouped together."
+                },
+                {
+                  name: "Miller’s Law",
+                  desc: "The average person can only keep 7 (plus or minus 2) items in their working memory."
+                },
+                {
+                  name: "Occam’s Razor",
+                  desc: "Among competing hypotheses that predict equally well, the one with the fewest assumptions should be selected."
+                }
+              ].map((law) => (
+                <div key={law.name} className="p-6 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors">
+                  <h3 className="font-bold mb-2">{law.name}</h3>
+                  <p className="text-sm text-muted-foreground">{law.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Section>
